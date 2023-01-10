@@ -1,13 +1,14 @@
 # 1. Name:
-#      -your name-
+#      Garrett Badger
 # 2. Assignment Name:
 #      Lab 01: Tic-Tac-Toe
 # 3. Assignment Description:
 #      Play the game of Tic-Tac-Toe
 # 4. What was the hardest part? Be as specific as possible.
-#      -a paragraph or two about how the assignment went for you-
+#      The hardest part about the assignment was making sure that the game kept track of each players moves. 
+#      As well as writing the board data to the file.
 # 5. How long did it take for you to complete the assignment?
-#      -total time in hours including reading the assignment and submitting the program-
+#      4 hours
 
 import json
 
