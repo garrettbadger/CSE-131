@@ -126,13 +126,16 @@ def possible_moves(board, co):
     
 def parse_input(coordinate):
     #This function will parse the coordinate input and return the row and column of the coordinate.
+    column = -1
+    row = -1
     for letter in coordinate:
         if 'A' <= letter <= 'Z':
             column = ord(letter) - ord('A')
         if '1' <= letter <= '9':
             row = int(letter) - 1
-    assert column < 8 and column > 0, "Column should be between A and I."
-    assert row < 8 and column > 0, "Row should be between 1 and 9."
+    assert len(coordinate) == 2, "Coordinate should have 1 letter between A and I and 1 letter between 1 and 9."
+    assert column <= 8 and column >= 0, "Column should be between A and I."
+    assert row <= 8 and row >= 0, "Row should be between 1 and 9."
         
     return(row, column)
     
