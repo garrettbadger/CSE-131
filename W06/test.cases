@@ -1,0 +1,9 @@
+coordinate_parsing
+Name      | input   | output     | type
+reverse     2A        2A          requirement
+lowercase   b2        B2          requirement
+high        I9        I9          boundary
+low         A1        A1          boundary
+row_high    I10       Error       Error
+row_low     A0        Error       Error
+col_high    Z6        Error       Error

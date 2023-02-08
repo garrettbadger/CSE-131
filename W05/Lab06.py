@@ -15,6 +15,7 @@ def main():
     board = read_board(filename)
     display_board(board)
     done = ''
+    #Main play loop
     while done != 'q':
         done = play_round(board)
         if done == 'q':
@@ -25,6 +26,7 @@ def main():
     
 
 def read_board(filename):
+    #This will read a file that is given by the user into a board.
     try:
         file = open('W05/'+filename, 'r')
         board_text = file.read()
@@ -34,6 +36,7 @@ def read_board(filename):
         print('Filename was not vaild.')
     
 def display_board(board):
+    #This will take the board from read board and display it to the user.
     print('   A B C D E F G H I')
     for row in range(0,9,1):
         if row == 3 or row == 6:
@@ -50,10 +53,12 @@ def display_board(board):
             print(f'{seperator[column]}', end="")
     
 def play_round(board):
+    #This function plays one round of sudoku.
     coordinate = input("Specify a coordinate to edit or 'Q' to save and quit or 'S' to see possible moves.\n> ")
     coordinate = coordinate.lower()
     if coordinate == 'q':
         return 'q'
+    #Give the user possible moves when they select s.
     if coordinate == 's':
         point = input('Which coordinate would you like to see moves for? ')
         possible_moves(board, point)
@@ -65,6 +70,7 @@ def play_round(board):
         board[row][column] = number
 
 def possible_moves(board, co):
+    #This function will compute the possible moves for a given square on the board.
     row, column = parse_input(co.upper())
     non_moves = set()
     print(f'Your possible moves for {co} are: ')
@@ -113,12 +119,13 @@ def possible_moves(board, co):
                     non_moves.add(board[i][x])
             
 
-    for i in range(0,9,1):
+    for i in range(0,10,1):
             if i not in non_moves:
                 print(i)
     print()
     
 def parse_input(coordinate):
+    #This function will parse the coordinate input and return the row and column of the coordinate.
     for letter in coordinate:
         if 'A' <= letter <= 'Z':
             column = ord(letter) - ord('A')
@@ -127,6 +134,7 @@ def parse_input(coordinate):
     return(row, column)
     
 def is_input_legal(board, number, row, column):
+    #This function determines if the play is legal according to the rules of sudouku.
     valid = 0
     inside_square = 0
     if number < 1 or number > 9:
@@ -143,6 +151,7 @@ def is_input_legal(board, number, row, column):
                 print('The number you entered earlier is already in the column.')
     else:
         print('The number you entered earlier is already in the row.')
+    #This is the logic to check the inside square of the sudoku board.
     if row < 3:
         if column < 3:
             for i in range(3):
@@ -198,6 +207,7 @@ def is_input_legal(board, number, row, column):
         return False
         
 def write_board(board):
+    #This function will save the game board to a file of the users choice.
     filename = input("Please enter a valid filename: ")
     with open('W05/'+filename, 'w') as file:
         board_json = {}
