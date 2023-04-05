@@ -124,18 +124,102 @@
 
 # display_names(['George', 'Jerry', 'Kramer', 'Elaine'])
 
-def sumTheDigits(number):
-   if number == 0:
-      return 0
-   else:
-      return number % 10 + sumTheDigits(number / 10)
+# def sumTheDigits(number):
+#    if number == 0:
+#       return 0
+#    else:
+#       return number % 10 + sumTheDigits(number / 10)
    
-print(sumTheDigits(11))
+# print(sumTheDigits(11))
 
-def sum_digits(number):
-   new_num = 0
-   while number != 0:
-      new_num += (number % 10)
-      number = number / 10
-   return new_num
-print(sum_digits(11))
+# def sum_digits(number):
+#    new_num = 0
+#    while number != 0:
+#       new_num += (number % 10)
+#       number = number / 10
+#    return new_num
+# print(sum_digits(11))
+
+# def compute_tax(cost):
+#    tax = cost * 0.078
+#    cost += tax
+#    return round(cost,2)
+
+# print(compute_tax(5))
+# print(compute_tax(0))
+# print(compute_tax(1.005))
+
+# def prompt():
+#    '''Prompt the user for a decimal number'''
+#    number = -1
+#    while number < 0:
+#       try:
+#          number = int(input('Please enter a whole number: '))
+#       except ValueError:
+#          print('Only enter whole numbers.')
+#    return number
+
+# print(prompt())
+from itertools import zip_longest
+
+# Define a list with items of different lengths
+shopping_list = [('Bib Shorts', 'Clothing', '$92.50'), ('Roubaix', 'Bicycle', '$3,599.99'), ('Cycling Computer', 'Accessories', '$394.99'),
+               ('Helmet', 'Accessories', '$299.99'), ('Road Shoes', 'Shoes', '$144.99'), ('700c presta tube', 'Accessories', '$5.25'),
+               ('Jersey', 'Clothing', '$25.99'), ('Mult-Function Tool', 'Accessories', '$22.99'), ('Gloves', 'Accessories', '$8.99'), 
+               ('Cleats', 'Shoes', '$15.99'), ('Power Pedals', 'Accessories', '$999.99'), ('Socks', 'Clothing', '$8.50')]
+
+# Determine the maximum length of any item in the list
+# max_length = max(len(item) for item in shopping_list)
+
+# # Use zip_longest to iterate over the items in the list
+# # and pad shorter items with spaces to make them the same length
+# for item in zip_longest(*shopping_list, fillvalue=' ' * max_length):
+#     for i in range(3):
+#     # Use string formatting to print each item with a fixed width
+#          print("{:<{}}".format(item[0][i], max_length), end=' ')
+#          # print("{:<{}}".format(item[1], max_length), end=' ')
+#          # print("{:<{}}".format(item[2], max_length), end=' ')
+#          # print("{:<{}}".format(item[3], max_length), end=' ')
+#          # print("{:<{}}".format(item[4], max_length), end=' ')
+
+
+
+# for i in range(len(shopping_list)):
+#     print()
+#     for x in range(3):
+        
+#       print(shopping_list[i][x], end="   ")
+# def is_accessory(item):
+#      for i in item:
+#           if i == 'Accessories':
+#                return True
+     
+# new_list = filter(lambda x: x == 'Accessories', shopping_list)
+# print(list(new_list))
+# from functools import reduce
+
+# def price_adjust(item):
+#      for i in item:
+#           if i.count('$') > 0:
+#                i = i.replace('$', '')
+#                i = i.replace(',', '')
+#                num = round(float(i) - (float(i) * .2), 2)
+#                i = '$' + str(num)
+#                return i
+               
+# adjusted_list = map(price_adjust, shopping_list)
+# print(list(adjusted_list))
+
+from functools import reduce
+
+def price_adjust(item1, item2):
+      
+      for x in item2:
+            if x.count('$') > 0:
+               x = x.replace('$', '')
+               x = x.replace(',', '')
+               num2 = float(x)
+      return item1 + num2
+               
+result = reduce(price_adjust, shopping_list, 0)
+print(round(result,2))
